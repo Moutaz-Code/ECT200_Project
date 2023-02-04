@@ -1,4 +1,4 @@
-.banner {
+.banner_1 {
   /*main heade/banner at the top of the screen*/
   background-color: red;
   color: rgb(0, 0, 0);
@@ -29,7 +29,6 @@ button {
 }
 
 button {
-  /*search button itself*/
   background-color: #0c2340;
   color: #fff;
   padding: 10px 20px;
@@ -52,25 +51,32 @@ ul {
 li {
   margin: 0 10px;
 }
+
 body {
   background-color: #f1f1f1;
 }
 
 h2 {
-  text-align: center;
+  text-align: left;
 }
+
 body {
   margin: 0;
   padding: 0;
 }
+
 .vl {
-  border-left: 6px solid green;
-  height: 80px;
+  border-left: 6px solid rgb(0, 0, 0);
+  height: 100px;
   object-position: middle;
-}
-.vertical {
-  border-left: 6px solid black;
-  height: 200px;
   position: absolute;
-  left: 50%;
+  left: 26%;
+  padding-bottom: 40px;
+  top: -20px;
+}
+
+.Button_Top {
+  position: absolute;
+  top: 39px;
+  left: 350px;
 }
