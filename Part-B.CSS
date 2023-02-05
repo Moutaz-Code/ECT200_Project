@@ -15,21 +15,16 @@
   border-radius: 15px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
 label,
 input,
 button {
+  /* Position of the buttons do not touch */
   margin: 10px 0;
 }
 
 button {
-  background-color: #0c2340;
+  /* Buttons settings */
+  background-color: #400c33;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -37,11 +32,8 @@ button {
   border-radius: 15px;
 }
 
-section:nth-of-type(2) {
-  text-align: center;
-}
-
 ul {
+  /*What keeps the buttons beside each other*/
   list-style: none;
   display: inline-flex;
   margin: 0;
@@ -49,23 +41,23 @@ ul {
 }
 
 li {
+  /*Spacing between the buttons*/
   margin: 0 10px;
 }
 
 body {
+  /*body is body*/
   background-color: #f1f1f1;
 }
 
-h2 {
-  text-align: left;
-}
-
 body {
+  /*PLEASE I BEG DO NOT TOUCH IT TOOK MORE TIME THAN ALL OF THE CODE (Border thing)*/
   margin: 0;
   padding: 0;
 }
 
 .V-Line-1 {
+  /*Line after "Flight Booking" in the first banner*/
   border-left: 6px solid rgb(2, 0, 139);
   height: 100px;
   object-position: middle;
@@ -76,6 +68,7 @@ body {
 }
 
 .Button_Top {
+  /*Button postion on the screen 2.0*/
   position: absolute;
   top: 6.5%;
   left: 40%;
