@@ -11,6 +11,8 @@ from datetime import datetime
 import os
 os.system('cls')
 
+def CalculateTicket():
+    
 # Create root window
 root = Tk()
 root.configure(background='DimGray')
@@ -79,10 +81,5 @@ frame3.pack(fill='both', expand=True)
 notebook.add(frame1, text='Book')
 notebook.add(frame2, text='Manage')
 notebook.add(frame3, text='Status')
-
-"""
-rootFrame = ttk.Frame(root, padding="5 5 15 15")
-rootFrame.grid(column=0, row=0, sticky=(N, W, E, S))
-"""
 
 root.mainloop()
