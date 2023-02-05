@@ -65,8 +65,8 @@ body {
   padding: 0;
 }
 
-.vl {
-  border-left: 6px solid rgb(0, 0, 0);
+.V-Line-1 {
+  border-left: 6px solid rgb(2, 0, 139);
   height: 100px;
   object-position: middle;
   position: absolute;
@@ -77,6 +77,6 @@ body {
 
 .Button_Top {
   position: absolute;
-  top: 39px;
-  left: 350px;
+  top: 6.5%;
+  left: 40%;
 }
