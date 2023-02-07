@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import Notebook, Style
 import tkinter.font as font
+from tkcalendar import Calendar
 from tkinter.messagebox import showinfo
 from math import *
 import random as rand
@@ -11,8 +12,25 @@ from datetime import datetime
 import os
 os.system('cls')
 
-def CalculateTicket():
-    
+tripDirection = [1, 2] #1 way or 2 ways
+tripDistance = eval(input("trip distance"))
+tripClass = {
+    "Economy Class":300,
+    "Business Class": 850,
+    "First Class": 1600
+}
+demandFactor = [] # This variable is a multiplier for days of the week, to simulate demand on a specific day which affects price.
+# In this iteration, the multiplier should be between 0.7 and 1.4. 
+
+def bookFlightCost():
+    ticketCost = ((tripDirection * tripDistance)+tripClass)*demandFactor
+
+
+def Reschedule():
+    # Select new date
+    CostDiff = flightCost
+
+
 # Create root window
 root = Tk()
 root.configure(background='DimGray')
