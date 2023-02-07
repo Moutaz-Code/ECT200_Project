@@ -1,3 +1,14 @@
+.V-Line-1 {
+  /*Line after "Flight Booking" in the first banner*/
+  border-left: 6px solid rgb(2, 0, 139);
+  height: 100px;
+  object-position: middle;
+  position: absolute;
+  left: 26%;
+  padding-bottom: 45px;
+  top: -20px;
+}
+
 .banner_1 {
   /*main heade/banner at the top of the screen*/
   background-color: red;
@@ -15,38 +26,7 @@
   border-radius: 15px;
 }
 
-label,
-input,
-button {
-  /* Position of the buttons do not touch */
-  margin: 10px 0;
-}
-
-button {
-  /* Buttons settings */
-  background-color: #400c33;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
-}
-
-ul {
-  /*What keeps the buttons beside each other*/
-  list-style: none;
-  display: inline-flex;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  /*Spacing between the buttons*/
-  margin: 0 10px;
-}
-
 body {
-  /*body is body*/
   background-color: #f1f1f1;
 }
 
@@ -56,20 +36,24 @@ body {
   padding: 0;
 }
 
-.V-Line-1 {
-  /*Line after "Flight Booking" in the first banner*/
-  border-left: 6px solid rgb(2, 0, 139);
-  height: 100px;
-  object-position: middle;
-  position: absolute;
-  left: 26%;
-  padding-bottom: 40px;
-  top: -20px;
+table {
+  /*Don't touch unless you want buttons to look like shit rubbed on a wall*/
+  width: 100%;
 }
 
 .Button_Top {
-  /*Button postion on the screen 2.0*/
-  position: absolute;
-  top: 6.5%;
-  left: 40%;
+  width: 30%;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  float: right;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Button_Top:hover {
+  background-color: #ddd;
 }
