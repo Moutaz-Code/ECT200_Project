@@ -37,30 +37,100 @@
       <!--Yeeyee ahh line that took 3 years off my life to do-->
       <br />
       <div class="banner_2">
-        <table class="Radio_Buttons">
-          <tr>
-            <td>
-              <input type="radio" id="html" name="fav_language" value="HTML" />
-                <label for="html">HTML</label><br />
-            </td>
-            <td>
-              <input type="radio" id="css" name="fav_language" value="CSS" />  
-              <label for="css">CSS</label><br />
-            </td>
-            <td>
-              <input
-                type="radio"
-                id="javascript"
-                name="fav_language"
-                value="JavaScript"
-              />
-                <label for="javascript">JavaScript</label>
-            </td>
-          </tr>
-        </table>
         <!-- the below div tag is for the contents of the booking page-->
+        <label for="arrivalDate">Arrival date:</label>
+        <input type="date" id="arrivalDate" />
+
+        <label for="departureDate">Departure date:</label>
+        <input type="date" id="departureDate" />
+
+        <label for="adults">Adults:</label>
+        <input type="number" id="adults" min="0" max="100" />
+
+        <br /><br />
+
+        <label for="kids">Kids:</label>
+        <input type="number" id="kids" min="0" max="100" />
+
+        <label for="cabinClass">Select a cabin class:</label>
+        <select id="cabinClass">
+          <option value="">Select a cabin class</option>
+          <option value="economy">Economy</option>
+          <option value="premiumEconomy">Premium Economy</option>
+          <option value="business">Business</option>
+          <option value="first">First</option>
+        </select>
+
+        <label for="countries1">Select a country:</label>
+        <select id="countries1">
+          <option value="">Loading countries...</option>
+        </select>
+
+        <br /><br />
+
+        <label for="countries2">Select another country:</label>
+        <select id="countries2">
+          <option value="">Loading countries...</option>
+        </select>
+
+        <script>
+          const apiUrl =
+            "https://restcountries.com/v2/all?fields=name;alpha2Code";
+          const countrySelectors = document.querySelectorAll(
+            "select[id^=countries]"
+          );
+
+          countrySelectors.forEach((countrySelector) => {
+            fetch(apiUrl)
+              .then((response) => response.json())
+              .then((countries) => {
+                countrySelector.innerHTML = "";
+                countrySelector.innerHTML = `
+                  <option value="">Select a country</option>
+                  ${countries
+                    .map(
+                      (country) =>
+                        `<option value="${country.alpha2Code}">${country.name}</option>`
+                    )
+                    .join("")}
+                `;
+              });
+          });
+        </script>
+
         <div id="BookContent" style="display: none">
-          <p>This is some hidden content.</p>
+          <table class="Radio_Buttons">
+            <tr>
+              <td>
+                <br />
+                <input
+                  type="radio"
+                  id="html"
+                  name="fav_language"
+                  value="HTML"
+                />
+                <label for="html">HTML</label><br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br />
+                <input type="radio" id="css" name="fav_language" value="CSS" />
+                <label for="css">CSS</label><br />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br /><input
+                  type="radio"
+                  id="javascript"
+                  name="fav_language"
+                  value="JavaScript"
+                />
+                <label for="javascript">JavaScript</label>
+              </td>
+            </tr>
+          </table>
         </div>
         <div id="ManageContent" style="display: none">
           <p>This is some hidden content. (18+)</p>
