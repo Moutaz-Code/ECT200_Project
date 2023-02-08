@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <title>Flight Booking</title>
   <head>
@@ -5,42 +6,71 @@
     <!--Thing that links this to the css file-->
   </head>
   <body>
-    <section class="inverse full-bleed">
-      <!--For the yeeyee ahh banner than did not want to stick to the wall-->
-    </section>
     <header>
       <div class="banner_1">
         <!--Main banner at the top of the thing-->
-        <h1>Flight Booking</h1>
-        <ul class="Button_Top">
-          <li><button>Book</button></li>
-          <li><button>Manage Booking</button></li>
-          <li><button>Flight Status</button></li>
-          <li><button>Exit</button></li>
-        </ul>
+        <table width="100%">
+          <col style="width: 26%" />
+          <col style="width: 24.66%" />
+          <col style="width: 24.66%" />
+          <col style="width: 24.66%" />
+          <!--Button border thing-->
+          <tr>
+            <td><h1 class="flight_thing">Flight Booking</h1></td>
+            <!--Hero banner header-->
+            <td><button id="BookButton" class="Button_Top">Book</button></td>
+            <td>
+              <button id="ManageButton" class="Button_Top">
+                Manage Booking
+              </button>
+            </td>
+            <td>
+              <button id="FlightButton" class="Button_Top">
+                Flight Status
+              </button>
+            </td>
+          </tr>
+        </table>
       </div>
       <!--Main buttons up top that will have the functions-->
       <div class="V-Line-1"></div>
       <!--Yeeyee ahh line that took 3 years off my life to do-->
-      <div class="banner_2"></div>
+      <br />
+      <div class="banner_2">
+        <table class="Radio_Buttons">
+          <tr>
+            <td>
+              <input type="radio" id="html" name="fav_language" value="HTML" />
+                <label for="html">HTML</label><br />
+            </td>
+            <td>
+              <input type="radio" id="css" name="fav_language" value="CSS" />  
+              <label for="css">CSS</label><br />
+            </td>
+            <td>
+              <input
+                type="radio"
+                id="javascript"
+                name="fav_language"
+                value="JavaScript"
+              />
+                <label for="javascript">JavaScript</label>
+            </td>
+          </tr>
+        </table>
+        <!-- the below div tag is for the contents of the booking page-->
+        <div id="BookContent" style="display: none">
+          <p>This is some hidden content.</p>
+        </div>
+        <div id="ManageContent" style="display: none">
+          <p>This is some hidden content. (18+)</p>
+        </div>
+        <div id="FlightContent" style="display: none">
+          <p>This is some hidden content. (21+)</p>
+        </div>
+      </div>
       <!--Second box under the main where stuff will happen in it-->
     </header>
-    <!-- <main>
-       <section>
-         <Thank you ChatGPT for the date>
-        <form>
-          <label for="destination">Destination:</label>
-          <input type="text" id="destination" name="destination" />
-
-          <label for="departure-date">Departure Date:</label>
-          <input type="date" id="departure-date" name="departure-date" />
-
-          <label for="return-date">Return Date:</label>
-          <input type="date" id="return-date" name="return-date" />
-
-          <button type="submit">Search</button>
-        </form> 
-      </section> 
-    </main> -->
   </body>
 </html>
+<script src="Part-B Java.txt"></script>
