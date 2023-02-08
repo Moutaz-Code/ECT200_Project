@@ -1,28 +1,77 @@
-<html>
-  <title>Flight Booking</title>
-  <head>
-    <link rel="stylesheet" type="text/css" href="Part-B.CSS" />
-    <!--Thing that links this to the css file-->
-  </head>
-  <body>
-    <header>
-      <div class="banner_1">
-        <!--Main banner at the top of the thing-->
-        <h1>Flight Booking</h1>
-        <table>
-          <tr>
-            <td><button class="Button_Top">Book</button></td>
-            <td><button class="Button_Top">Manage Booking</button></td>
-            <td><button class="Button_Top">Flight Status</button></td>
-          </tr>
-        </table>
-      </div>
-      <!--Main buttons up top that will have the functions-->
-      <div class="V-Line-1"></div>
-      <!--Yeeyee ahh line that took 3 years off my life to do-->
-      <br />
-      <div class="banner_2"></div>
-      <!--Second box under the main where stuff will happen in it-->
-    </header>
-  </body>
-</html>
+.V-Line-1 {
+  /*Line after "Flight Booking" in the first banner*/
+  border-left: 6px solid rgb(0, 0, 0);
+  height: 100px;
+  object-position: middle;
+  position: absolute;
+  left: 26%;
+  padding-bottom: 45px;
+  top: -20px;
+}
+
+.banner_1 {
+  /*main heade/banner at the top of the screen*/
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-align: left;
+}
+
+.banner_2 {
+  /*second banner for buttons and the booking itself*/
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 80px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+body {
+  /*PLEASE I BEG DO NOT TOUCH IT TOOK MORE TIME THAN ALL OF THE CODE (Border thing)*/
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  /*Don't touch unless you want buttons to look like shit rubbed on a wall*/
+  width: 100%;
+}
+.flight_thing {
+  position: relative;
+  right: 1%;
+}
+
+.Button_Top {
+  width: 60%;
+  position: relative;
+  left: 25%;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Button_Top:hover {
+  background-color: #ddd;
+}
+
+#banner {
+  width: 100%;
+  height: 200px;
+  background-color: #f2f2f2;
+}
+
+#content1,
+#content2 {
+  display: none;
+}
+
+.Radio_Buttons{
+  
+}
