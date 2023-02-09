@@ -8,6 +8,7 @@ import random as rand
 import calendar
 from datetime import datetime
 
+
 import os
 os.system('cls')
 
@@ -77,6 +78,7 @@ OriginCol = "#CBDDF6"
 SelecCol = "#8ab3e6"
 
 # Style the tabs
+
 style = Style()
 style.theme_create("TabbyStyle", parent="alt", settings={"TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0]}}, "TNotebook.Tab": {"configure": {
                    "padding": [50, 10], "background": OriginCol}, "map": {"background": [("selected", SelecCol)], "expand": [("selected", [1, 1, 1, 0])]}}})
