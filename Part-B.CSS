@@ -1,24 +1,21 @@
-.V-Line-1 {
-  /*Line after "Flight Booking" in the first banner*/
+.VLine1 {
   border-left: 6px solid rgb(0, 0, 0);
   height: 100px;
   object-position: middle;
   position: absolute;
   left: 26%;
-  padding-bottom: 45px;
+  padding-bottom: 59.5px;
   top: -20px;
 }
 
-.banner_1 {
-  /*main heade/banner at the top of the screen*/
+.TopBanner1 {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 20px;
   text-align: left;
 }
 
-.banner_2 {
-  /*second banner for buttons and the booking itself*/
+.TopBanner2 {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 80px;
@@ -28,24 +25,20 @@
 
 body {
   background-color: #f1f1f1;
-}
-
-body {
-  /*PLEASE I BEG DO NOT TOUCH IT TOOK MORE TIME THAN ALL OF THE CODE (Border thing)*/
   margin: 0;
   padding: 0;
 }
 
 table {
-  /*Don't touch unless you want buttons to look like shit rubbed on a wall*/
   width: 100%;
 }
-.flight_thing {
+
+.FlightHead {
   position: relative;
   right: 1%;
 }
 
-.Button_Top {
+.BookButton {
   width: 60%;
   position: relative;
   left: 25%;
@@ -57,7 +50,7 @@ table {
   cursor: pointer;
 }
 
-.Button_Top:hover {
+.BookButton:hover {
   background-color: #ddd;
 }
 
@@ -87,7 +80,7 @@ table {
 
 th,
 td {
-  border: 1px solid black;
+  border: 0px solid black;
   padding: 8px;
   text-align: left;
 }
