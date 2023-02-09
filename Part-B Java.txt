@@ -15,4 +15,3 @@ document.getElementById("BookContent").style.display = "block"
     document.getElementById("ManageContent").style.display = "none";
     document.getElementById("FlightContent").style.display = "block";
   });
-  
