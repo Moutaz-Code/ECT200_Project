@@ -37,36 +37,51 @@
       <br />
       <div class="banner_2">
         <!-- Second banner that has most of the functions-->
-        <table border="1">
+        <table>
           <tr>
-            <td><label for="countries1">Flying From:</label></td>
-            <select id="countries1"></select>
-            <td><label for="countries2">Flying To:</label></td>
-            <select id="countries2"></select>
-            <td><label for="departureDate">Departure date:</label></td>
-            <input type="date" id="departureDate" />
-            <td><label for="arrivalDate">Return Date:</label></td>
-            <input type="date" id="arrivalDate" />
-          </tr>
-          <tr>
-            <td><label for="cabinClass">Select a cabin class:</label></td>
-            <select id="cabinClass">
-              <option value="">Select a cabin class</option>
-              <option value="economy">Economy</option>
-              <option value="premiumEconomy">Premium Economy</option>
-              <option value="business">Business</option>
-              <option value="first">First</option>
-            </select>
             <td>
-              <label for="adults">Adults:</label>
-              <input type="number" id="adults" min="0" max="100" />
-              <br />
-              <label for="kids">Kids:</label>
+              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <label for="html">One Way</label><br />
+              <input type="radio" id="css" name="fav_language" value="CSS" />
+              <label for="css">Two Way</label><br />
+              <input
+                type="radio"
+                id="javascript"
+                name="fav_language"
+                value="JavaScript"
+              />
+              <label for="javascript">Multi City</label><br />
+            </td>
+            <td>
+              <label for="countries1">Flying From:</label><br />
+              <select id="countries1"></select
+              ><br />
+              <label for="countries2">Flying To:</label><br />
+              <select id="countries2"></select>
+            </td>
+            <td>
+              <label for="departureDate">Departure date:</label><br />
+              <input type="date" id="departureDate" /><br />
+              <label for="arrivalDate">Return Date:</label><br />
+              <input type="date" id="arrivalDate" />
+            </td>
+            <td>
+              <label for="cabinClass">Select a cabin class:</label><br />
+              <select id="cabinClass">
+                <option value="">Select a cabin class</option>
+                <option value="economy">Economy</option>
+                <option value="premiumEconomy">Premium Economy</option>
+                <option value="business">Business</option>
+                <option value="first">First</option></select
+              ><br />
+              <label for="adults">Adults:</label><br />
+              <input type="number" id="adults" min="0" max="100" /><br />
+              <label for="kids">Kids:</label><br />
               <input type="number" id="kids" min="0" max="100" />
             </td>
           </tr>
         </table>
-        <!--Drop down lists and other types of lists for the book button-->
+        <!--Drop down lists and other types of lists and buttons-->
         <script>
           const apiUrl =
             "https://restcountries.com/v2/all?fields=name;alpha2Code";
@@ -91,48 +106,7 @@
           });
         </script>
         <!--Country code-->
-        <div id="BookContent" style="display: none">
-          <table class="Radio_Buttons">
-            <tr>
-              <td>
-                <br />
-                <input
-                  type="radio"
-                  id="html"
-                  name="fav_language"
-                  value="HTML"
-                />
-                <label for="html">One Way</label><br />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <br />
-                <input type="radio" id="css" name="fav_language" value="CSS" />
-                <label for="css">Two Way</label><br />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <br /><input
-                  type="radio"
-                  id="javascript"
-                  name="fav_language"
-                  value="JavaScript"
-                />
-                <label for="javascript">Multi City</label>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div id="ManageContent" style="display: none">
-          <p>This is some hidden content. (18+)</p>
-        </div>
-        <div id="FlightContent" style="display: none">
-          <p>This is some hidden content. (21+)</p>
-        </div>
       </div>
-      <!--Radio buttons-->
     </header>
   </body>
 </html>
