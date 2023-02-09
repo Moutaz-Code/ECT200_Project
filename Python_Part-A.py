@@ -2,41 +2,67 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import Notebook, Style
 import tkinter.font as font
-from tkcalendar import Calendar
 from tkinter.messagebox import showinfo
 from math import *
 import random as rand
-from calendar import month_name
+import calendar
 from datetime import datetime
 
 import os
 os.system('cls')
-##
-base_fare
-trip_direction = [1, 2]  # 1 or 2 ways
-distance
-rate_per_km
+
+base_fare = 300
+# trip_direction = [1, 2]  # 1 or 2 ways this should be taken care of below in tkinter radio buttons
 class_premium = [300, 850, 1600]  # Economy, Business, and first classes
-demand_factor  # In this iteration, the multiplier should be between 0.7 and 1.4. This variable is a multiplier for days of the week, to simulate demand on a specific day which affects price.
-age_factor = {
-    "Adult": 200,
-    "Infant": 75
-}
+age_factor_list = [200, 120, 75]  # Adult, 3-18 kids, and under 3
+age_factor_determinant = []
+demand_factor = rand.uniform(0.7, 1.4)
+distance = rand.randint(5000, 15000)
+rate_per_km = rand.uniform(0.1, 1)
+# In this iteration, the multiplier should be between 0.7 and 1.4. This variable is a multiplier for days of the week, to simulate demand on a specific day which affects price.
 
 
-##
-tripDistance = eval(input("trip distance"))  # this is a placeholder
-demandFactor = []
+def show_cities():
+    if trip_direction.get() == "True":
+        MultiCity1_label.grid(row=2, column=3, sticky='w', pady=2, padx=5)
+        Combobox_MultiCity1.grid(row=3, column=3, pady=5, padx=5)
+        ###########################################################
+        MultiCity2_label.grid(row=4, column=3, sticky='w', pady=2, padx=5)
+        Combobox_MultiCity2.grid(row=5, column=3, pady=5, padx=5)
+        ###########################################################
+        MultiCity3_label.grid(row=6, column=3, sticky='w', pady=2, padx=5)
+        Combobox_MultiCity3.grid(row=7, column=3, pady=5, padx=5)
+    else:
+        pass
 
 
-def bookFlightCost():
-    ticketCost = (base_fare + (trip_direction*(rate_per_km*distance)
-                               ) + class_premium+age_factor)*demand_factor
+def hide_cities():
+    MultiCity1_label.grid_remove()
+    Combobox_MultiCity1.grid_remove()
+    ###########################################################
+    MultiCity2_label.grid_remove()
+    Combobox_MultiCity2.grid_remove()
+    ###########################################################
+    MultiCity3_label.grid_remove()
+    Combobox_MultiCity3.grid_remove()
 
 
-def Reschedule():
-    # Select new date
-    CostDiff = flightCost
+def show_return_date():
+    Return_Date_Day_Label.grid(row=12, column=1, sticky='w', pady=2, padx=5)
+    Return_Date_Day_Entry.grid(
+        row=13, column=1, sticky='w', ipadx=6, pady=5, padx=5)
+
+    Return_Date_Month_Label.grid(row=12, column=2, sticky='w', pady=2, padx=5)
+    Return_Date_Month_Entry.grid(
+        row=13, column=2, sticky='w', ipadx=6, pady=5, padx=5)
+
+
+def hide_return_date():
+    Return_Date_Day_Label.grid_remove()
+    Return_Date_Day_Entry.grid_remove()
+
+    Return_Date_Month_Label.grid_remove()
+    Return_Date_Month_Entry.grid_remove()
 
 
 # Create root window
@@ -60,29 +86,66 @@ style.theme_use("TabbyStyle")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
+##########################
+trip_direction = StringVar()
+Departure_City = StringVar()
+Arrival_City = StringVar()
+MultiCity1 = StringVar()
+MultiCity2 = StringVar()
+MultiCity3 = StringVar()
+Passenger_Adult = StringVar()
+Passenger_Infant = StringVar()
+class_premium = StringVar()
+Departure_Date_Day = StringVar()
+Departure_Date_Month = StringVar()
+Return_Date_Day = StringVar()
+Return_Date_Month = StringVar()
+##########################
+TotalCost = []
+
+
+#class_premium_actual = class_premium.get()
+#print(class_premium_actual)
+#age_factor = float(Passenger_Adult.get())
+#ticketCost = (base_fare + (float(eval(str(trip_direction)))*(rate_per_km*distance)) +
+ #             class_premium+age_factor_list[age_factor_determinant])*demand_factor
+#TotalCost.append()
+
 # create a notebook
 notebook = ttk.Notebook(root, width=screen_width, height=screen_height)
 notebook.pack(fill=BOTH, expand=True)
 
 # create main frames of each tab
-frame1 = ttk.Frame(notebook, width=screen_width, height=screen_height)
-frame2 = ttk.Frame(notebook, width=screen_width, height=screen_height)
-frame3 = ttk.Frame(notebook, width=screen_width, height=screen_height)
+BookingMainFrame = ttk.Frame(
+    notebook, width=screen_width, height=screen_height)
+ManagingMainFrame = ttk.Frame(
+    notebook, width=screen_width, height=screen_height)
+StatusMainFrame = ttk.Frame(notebook, width=screen_width, height=screen_height)
 
-# frames in tab 1
-frameText1 = ttk.Frame(frame1)
-# change width and relief later on, use for now to make organising easier=
-frameText1.pack()
+# frame 1 of 2 for text in tab 1, for text
+frameText1 = ttk.Frame(BookingMainFrame)
+frameText1.pack(ipady=5)
+###########################################################
+sep1 = ttk.Separator(BookingMainFrame, orient='horizontal')
+sep1.pack(fill='x')
+# frame 2 of 2 for text in tab 1, for actual work
+frameBookingMenu = ttk.Frame(BookingMainFrame)
+frameBookingMenu.pack()
 
-# frames in tab 2
-frameText2 = ttk.Frame(frame2)
-# change width and relief later on, use for now to make organising easier
+
+# frame 1 of 2 for text in tab 2, for text
+frameText2 = ttk.Frame(ManagingMainFrame)
 frameText2.pack()
+# frame 2 of 2 for text in tab 2, for actual work
+frameManagingMenu = ttk.Frame(ManagingMainFrame)
+frameManagingMenu.pack()
 
-# frames in tab 3
-frameText3 = ttk.Frame(frame3)
-# change width and relief later on, use for now to make organising easier
+# frame 1 of 2 for text in tab 3, for text
+frameText3 = ttk.Frame(StatusMainFrame)
 frameText3.pack()
+# frame 2 of 2 for text in tab 3, for actual work
+frameStatusMenu = ttk.Frame(StatusMainFrame)
+frameStatusMenu.pack()
 
 # labels for reference
 label1 = ttk.Label(
@@ -96,41 +159,147 @@ label1.grid(column=1, row=1)
 label2.grid(column=1, row=1)
 label3.grid(column=1, row=1)
 
-radio1
-radio2
-radio3
 
-radio1.grid()
-radio2.grid()
-radio3.grid()
+one_way = ttk.Radiobutton(frameBookingMenu, text='One way',
+                          value="1", variable=trip_direction, command=lambda: [hide_cities(), hide_return_date()])
+two_way = ttk.Radiobutton(frameBookingMenu, text='Return',
+                          value="2", variable=trip_direction, command=lambda: [hide_cities(), show_return_date()])
+multi_way = ttk.Radiobutton(frameBookingMenu, text='Multi-city',
+                            value="True", variable=trip_direction, command=lambda: [show_cities(), show_return_date()])
 
-combobox1
-combobox2
+two_way.grid(row=1, column=1, ipady=5, sticky='w')
+one_way.grid(row=1, column=2, ipady=5, sticky='w')
+multi_way.grid(row=1, column=3, ipady=5, sticky='w')
 
-combobox1.grid()
-combobox2.grid()
 
-dropdownlist
+departure_label = ttk.Label(frameBookingMenu, text="Flying from:")
+Combobox_Departure = ttk.Combobox(
+    frameBookingMenu, textvariable=Departure_City)
+Combobox_Departure['values'] = ('Aarhus', 'Abadan', 'Aberdeen', 'Abu Dhabi', 'Adana', 'Adiyaman', 'Akita', 'Al Ain',
+                                'Albany', 'Albuquerque ', 'Beijing', 'Beirut', 'Belfast', 'Cambrigde', 'Den Haag ', 'Derby',
+                                'Dhahran', 'Doha', 'Dubai', 'Dublin', 'Glasgow', 'Hammerfest', 'Hamilton', 'Istanbul')
 
-dropdownlist.grid()
 
-dropdownlist2
-# this is for the passengers
-dropdownlist2.grid()
+arrival_label = ttk.Label(frameBookingMenu, text="Flying to:")
+Combobox_Arrival = ttk.Combobox(frameBookingMenu, textvariable=Arrival_City)
+Combobox_Arrival['values'] = ('Aarhus', 'Abadan', 'Aberdeen', 'Abu Dhabi', 'Adana', 'Adiyaman', 'Akita', 'Al Ain',
+                              'Albany', 'Albuquerque ', 'Beijing', 'Beirut', 'Belfast', 'Cambrigde', 'Den Haag ', 'Derby',
+                              'Dhahran', 'Doha', 'Dubai', 'Dublin', 'Glasgow', 'Hammerfest', 'Hamilton', 'Istanbul')
 
-datepicker_departure
-datepicker_departure.grid()
+departure_label.grid(row=2, column=1, sticky='w', pady=2, padx=5)
+Combobox_Departure.grid(row=3, column=1, pady=5, padx=5)
 
-datepicker_return
-datepicker_return.grid()
+arrival_label.grid(row=2, column=2, sticky='w', pady=2, padx=5)
+Combobox_Arrival.grid(row=3, column=2, pady=5, padx=5)
+###############################################
 
-frame1.pack(fill='both', expand=True)
-frame2.pack(fill='both', expand=True)
-frame3.pack(fill='both', expand=True)
+
+MultiCity1_label = ttk.Label(frameBookingMenu, text="City #2:")
+Combobox_MultiCity1 = ttk.Combobox(
+    frameBookingMenu, textvariable=MultiCity1)
+Combobox_MultiCity1['values'] = ('Aarhus', 'Abadan', 'Aberdeen', 'Abu Dhabi', 'Adana', 'Adiyaman', 'Akita', 'Al Ain',
+                                 'Albany', 'Albuquerque ', 'Beijing', 'Beirut', 'Belfast', 'Cambrigde', 'Den Haag ', 'Derby',
+                                 'Dhahran', 'Doha', 'Dubai', 'Dublin', 'Glasgow', 'Hammerfest', 'Hamilton', 'Istanbul')
+
+
+MultiCity2_label = ttk.Label(frameBookingMenu, text="City #3:")
+Combobox_MultiCity2 = ttk.Combobox(
+    frameBookingMenu, textvariable=MultiCity2)
+Combobox_MultiCity2['values'] = ('Aarhus', 'Abadan', 'Aberdeen', 'Abu Dhabi', 'Adana', 'Adiyaman', 'Akita', 'Al Ain',
+                                 'Albany', 'Albuquerque ', 'Beijing', 'Beirut', 'Belfast', 'Cambrigde', 'Den Haag ', 'Derby',
+                                 'Dhahran', 'Doha', 'Dubai', 'Dublin', 'Glasgow', 'Hammerfest', 'Hamilton', 'Istanbul')
+
+
+MultiCity3_label = ttk.Label(frameBookingMenu, text="City #4:")
+Combobox_MultiCity3 = ttk.Combobox(
+    frameBookingMenu, textvariable=MultiCity3)
+Combobox_MultiCity3['values'] = ('Aarhus', 'Abadan', 'Aberdeen', 'Abu Dhabi', 'Adana', 'Adiyaman', 'Akita', 'Al Ain',
+                                 'Albany', 'Albuquerque ', 'Beijing', 'Beirut', 'Belfast', 'Cambrigde', 'Den Haag ', 'Derby',
+                                 'Dhahran', 'Doha', 'Dubai', 'Dublin', 'Glasgow', 'Hammerfest', 'Hamilton', 'Istanbul')
+
+
+###############################################
+
+
+Passenger_Adult_Tkinter = ttk.Spinbox(
+    frameBookingMenu, from_=1, to=9, textvariable=Passenger_Adult)
+PassengerAdult_label = ttk.Label(
+    frameBookingMenu, text="# of Adult Passengers:")
+
+PassengerAdult_label.grid(row=4, column=1, sticky='w', pady=2, padx=5)
+Passenger_Adult_Tkinter.grid(row=5, column=1, pady=5, padx=5)
+
+
+Passenger_Infant_Tkinter = ttk.Spinbox(
+    frameBookingMenu, from_=1, to=9, textvariable=Passenger_Infant)
+PassengerInfant_label = ttk.Label(
+    frameBookingMenu, text="# of Infant Passengers:")
+
+PassengerInfant_label.grid(row=4, column=2, sticky='w', pady=2, padx=5)
+Passenger_Infant_Tkinter.grid(row=5, column=2, pady=5, padx=5)
+
+
+Combobox_Cabin_Class = ttk.Combobox(
+    frameBookingMenu, textvariable=class_premium)
+Combobox_Cabin_Class['values'] = [
+    "Economy Class", "Business Class", "First Class"]
+Combobox_Cabin_Class.grid(row=7, column=1, pady=5, padx=5)
+
+Cabin_Class_Label = ttk.Label(frameBookingMenu, text="Choose Cabin Class")
+Cabin_Class_Label.grid(row=6, column=1, sticky='w', pady=5, padx=5)
+
+
+sep2 = ttk.Separator(frameBookingMenu, orient='horizontal')
+sep2.grid(row=8, column=1, sticky='WE', columnspan=2)
+
+# This next part was painful, tkcalendar is not working and it is 6am.
+
+Departure_Date_Day_Entry = ttk.Entry(
+    frameBookingMenu, textvariable=Departure_Date_Day)
+Departure_Date_Day_Label = ttk.Label(
+    frameBookingMenu, text="Enter Day of Departure: ")
+
+
+Departure_Date_Month_Entry = ttk.Entry(
+    frameBookingMenu, textvariable=Departure_Date_Month)
+Departure_Date_Month_Label = ttk.Label(
+    frameBookingMenu, text="Enter Month of Departure: ")
+
+
+Return_Date_Day_Entry = ttk.Entry(
+    frameBookingMenu, textvariable=Return_Date_Day)
+Return_Date_Day_Label = ttk.Label(
+    frameBookingMenu, text="Enter Day of Return: ")
+
+
+Return_Date_Month_Entry = ttk.Entry(
+    frameBookingMenu, textvariable=Return_Date_Month)
+Return_Date_Month_Label = ttk.Label(
+    frameBookingMenu, text="Enter Month of Return: ")
+
+Departure_Date_Day_Label.grid(row=9, column=1, sticky='w', pady=2, padx=5)
+Departure_Date_Day_Entry.grid(
+    row=10, column=1, sticky='w', ipadx=6, pady=5, padx=5)
+
+Departure_Date_Month_Label.grid(row=9, column=2, sticky='w', pady=2, padx=5)
+Departure_Date_Month_Entry.grid(
+    row=10, column=2, sticky='w', ipadx=6, pady=5, padx=5)
+
+Return_Date_Day_Label.grid(row=11, column=1, sticky='w', pady=2, padx=5)
+Return_Date_Day_Entry.grid(
+    row=12, column=1, sticky='w', ipadx=6, pady=5, padx=5)
+
+Return_Date_Month_Label.grid(row=11, column=2, sticky='w', pady=2, padx=5)
+Return_Date_Month_Entry.grid(
+    row=12, column=2, sticky='w', ipadx=6, pady=5, padx=5)
+
+BookingMainFrame.pack(fill='both', expand=True)
+ManagingMainFrame.pack(fill='both', expand=True)
+StatusMainFrame.pack(fill='both', expand=True)
 
 # add frames to notebook i.e. tabs
-notebook.add(frame1, text='Book')
-notebook.add(frame2, text='Manage')
-notebook.add(frame3, text='Status')
+notebook.add(BookingMainFrame, text='Book')
+notebook.add(ManagingMainFrame, text='Manage')
+notebook.add(StatusMainFrame, text='Status')
 
 root.mainloop()
