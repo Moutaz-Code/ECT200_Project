@@ -1,18 +1,6 @@
-document.getElementById("BookContent").style.display = "block"
- document.getElementById("BookButton").addEventListener("click", function() {
-    document.getElementById("BookContent").style.display = "block";
-    document.getElementById("ManageContent").style.display = "none";
-    document.getElementById("FlightContent").style.display = "none";
-  });
-  
-  document.getElementById("ManageButton").addEventListener("click", function() {
-    document.getElementById("BookContent").style.display = "none";
-    document.getElementById("ManageContent").style.display = "block";
-    document.getElementById("FlightContent").style.display = "none";
-  });
-  document.getElementById("FlightButton").addEventListener("click", function() {
-    document.getElementById("BookContent").style.display = "none";
-    document.getElementById("ManageContent").style.display = "none";
-    document.getElementById("FlightContent").style.display = "block";
-  });
-  
+const bookButton = document.getElementById("BookButton");
+const secondBanner = document.querySelector(".banner_2");
+
+bookButton.addEventListener("click", () => {
+  secondBanner.style.display = secondBanner.style.display === "none" ? "block" : "none";
+});

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <title>Flight Booking</title>
+  <head>
+    <link rel="stylesheet" type="text/css" href="5ara.css" />
+  </head>
+  <body>
+    <header>
+      <div class="TopBanner1" id="TopBanner1ID">
+        <table width="100%">
+          <col style="width: 26%" />
+          <col style="width: 24.66%" />
+          <col style="width: 24.66%" />
+          <col style="width: 24.66%" />
+          <tr>
+            <td><h1 class="FlightHead">Flight Booking</h1></td>
+            <td><button id="BookButtonID" class="BookButton">Book</button></td>
+            <td>
+              <button id="ManageButton" class="BookButton">
+                Manage Booking
+              </button>
+            </td>
+            <td>
+              <button id="FlightButton" class="BookButton">
+                Flight Status
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="VLine1" id="VLine1ID"></div>
+      <div class="BottomBanner2" id="ButtonBanner2ID">
+        <table class="TopBanner1" id="Table1ID">
+          <tr>
+            <td>
+              <input type="radio" id="html" name="fav_language" value="HTML" />
+              <label for="html">One Way</label>
+              <br />
+              <input type="radio" id="css" name="fav_language" value="CSS" />
+              <label for="css">Two Way</label>
+              <br />
+              <input
+                type="radio"
+                id="javascript"
+                name="fav_language"
+                value="JavaScript"
+              />
+              <label for="javascript">Multi City</label>
+              <br />
+            </td>
+          </tr>
+          <td>
+            <label for="countries1">Flying From:</label><br />
+            <select id="countries1"></select
+            ><br />
+            <label for="countries2">Flying To:</label><br />
+            <select id="countries2"></select>
+          </td>
+          <td>
+            <label for="departureDate">Departure date:</label><br />
+            <input type="date" id="departureDate" /><br />
+            <label for="arrivalDate">Return Date:</label><br />
+            <input type="date" id="arrivalDate" />
+          </td>
+          <td>
+            <label for="cabinClass">Select a cabin class</label><br />
+            <select id="cabinClass">
+              <option value="economy">Economy</option>
+              <option value="premiumEconomy">Premium Economy</option>
+              <option value="business">Business</option>
+              <option value="first">First Class</option>
+            </select>
+            <br />
+            <label for="adults">Adults:</label><br />
+            <input type="number" id="adults" min="0" max="100" /><br />
+            <label for="kids">Kids:</label><br />
+            <input type="number" id="kids" min="0" max="100" />
+          </td>
+        </table>
+      </div>
+    </header>
+  </body>
+</html>
+<script>
+  const apiUrl = "https://restcountries.com/v2/all?fields=name;alpha2Code";
+  const countrySelectors = document.querySelectorAll("select[id^=countries]");
+  countrySelectors.forEach((countrySelector) => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((countries) => {
+        countrySelector.innerHTML = "";
+        countrySelector.innerHTML = `
+                  <option value="">Select a country</option>
+                  ${countries
+                    .map(
+                      (country) =>
+                        `<option value="${country.alpha2Code}">${country.name}</option>`
+                    )
+                    .join("")}
+                `;
+      });
+  });
+</script>
+<script src="Part-B.JS"></script>

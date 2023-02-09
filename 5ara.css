@@ -1,5 +1,4 @@
-.V-Line-1 {
-  /*Line after "Flight Booking" in the first banner*/
+.VLine1 {
   border-left: 6px solid rgb(0, 0, 0);
   height: 100px;
   object-position: middle;
@@ -9,16 +8,14 @@
   top: -20px;
 }
 
-.banner_1 {
-  /*main heade/banner at the top of the screen*/
+.TopBanner1 {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 20px;
   text-align: left;
 }
 
-.banner_2 {
-  /*second banner for buttons and the booking itself*/
+.TopBanner2 {
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   padding: 80px;
@@ -28,25 +25,20 @@
 
 body {
   background-color: #f1f1f1;
-}
-
-body {
-  /*what keeps the banner at the end of the screen*/
   margin: 0;
   padding: 0;
 }
 
 table {
-  /*makes the buttons look like _buttons_*/
   width: 100%;
 }
-.flight_thing {
+
+.FlightHead {
   position: relative;
   right: 1%;
 }
 
-.Button_Top {
-  /*Buttons settings*/
+.BookButton {
   width: 60%;
   position: relative;
   left: 25%;
@@ -58,8 +50,7 @@ table {
   cursor: pointer;
 }
 
-.Button_Top:hover {
-  /*Highlights the button when you hover over it*/
+.BookButton:hover {
   background-color: #ddd;
 }
 
