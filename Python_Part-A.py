@@ -11,19 +11,19 @@ from datetime import datetime
 import os
 os.system('cls')
 
-base_fare = 300
+base_fare = 300.0
 # trip_direction = [1, 2]  # 1 or 2 ways this should be taken care of below in tkinter radio buttons
-class_premium = [300, 850, 1600]  # Economy, Business, and first classes
-age_factor_list = [200, 120, 75]  # Adult, 3-18 kids, and under 3
-age_factor_determinant = []
-demand_factor = rand.uniform(0.7, 1.4)
-distance = rand.randint(5000, 15000)
-rate_per_km = rand.uniform(0.1, 1)
+
+age_factor_list = [200.0, 75.0]
 # In this iteration, the multiplier should be between 0.7 and 1.4. This variable is a multiplier for days of the week, to simulate demand on a specific day which affects price.
+demand_factor = float(rand.uniform(0.7, 1.4))
+
+distance = float(rand.randint(5000, 15000))
+rate_per_km = float(rand.uniform(0.1, 1))
 
 
 def show_cities():
-    if trip_direction.get() == "True":
+    if trip_direction_special.get() == "True":
         MultiCity1_label.grid(row=2, column=3, sticky='w', pady=2, padx=5)
         Combobox_MultiCity1.grid(row=3, column=3, pady=5, padx=5)
         ###########################################################
@@ -81,20 +81,24 @@ style = Style()
 style.theme_create("TabbyStyle", parent="alt", settings={"TNotebook": {"configure": {"tabmargins": [2, 5, 2, 0]}}, "TNotebook.Tab": {"configure": {
                    "padding": [50, 10], "background": OriginCol}, "map": {"background": [("selected", SelecCol)], "expand": [("selected", [1, 1, 1, 0])]}}})
 style.theme_use("TabbyStyle")
+style.configure('TButton', font=('American typewriter', 14),
+                background='#232323', foreground='white')
+
 
 # Self explanatory...
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 
 ##########################
-trip_direction = StringVar()
+trip_direction = IntVar()
+trip_direction_special = StringVar()
 Departure_City = StringVar()
 Arrival_City = StringVar()
 MultiCity1 = StringVar()
 MultiCity2 = StringVar()
 MultiCity3 = StringVar()
-Passenger_Adult = StringVar()
-Passenger_Infant = StringVar()
+Passenger_Adult = IntVar()
+Passenger_Infant = IntVar()
 class_premium = StringVar()
 Departure_Date_Day = StringVar()
 Departure_Date_Month = StringVar()
@@ -104,12 +108,33 @@ Return_Date_Month = StringVar()
 TotalCost = []
 
 
-#class_premium_actual = class_premium.get()
-#print(class_premium_actual)
-#age_factor = float(Passenger_Adult.get())
-#ticketCost = (base_fare + (float(eval(str(trip_direction)))*(rate_per_km*distance)) +
- #             class_premium+age_factor_list[age_factor_determinant])*demand_factor
-#TotalCost.append()
+def getCost():
+    for i in range(int(Passenger_Adult.get())):
+        if class_premium.get().lower() == "Economy Class":
+            class_premium_number = 300.0
+        elif class_premium.get().lower() == "Business Class":
+            class_premium_number = 850.0
+        else:
+            class_premium_number = 1600.0
+
+        age_factor = float(Passenger_Adult.get())
+        ticketCost = (base_fare + (float(trip_direction.get())*(rate_per_km*distance)) +
+                      class_premium_number+age_factor_list[1])*demand_factor
+        TotalCost.append(ticketCost)
+
+    for i in range(int(Passenger_Infant.get())):
+        if class_premium.get().lower() == "Economy Class":
+            class_premium_number = 300.0
+        elif class_premium.get().lower() == "Business Class":
+            class_premium_number = 850.0
+        else:
+            class_premium_number = 1600.0
+
+        age_factor = float(Passenger_Adult.get())
+        ticketCost = (base_fare + (float(trip_direction.get())*(rate_per_km*distance)) +
+                      class_premium_number+age_factor_list[1])*demand_factor
+        TotalCost.append(ticketCost)
+
 
 # create a notebook
 notebook = ttk.Notebook(root, width=screen_width, height=screen_height)
@@ -133,31 +158,11 @@ frameBookingMenu = ttk.Frame(BookingMainFrame)
 frameBookingMenu.pack()
 
 
-# frame 1 of 2 for text in tab 2, for text
-frameText2 = ttk.Frame(ManagingMainFrame)
-frameText2.pack()
-# frame 2 of 2 for text in tab 2, for actual work
-frameManagingMenu = ttk.Frame(ManagingMainFrame)
-frameManagingMenu.pack()
-
-# frame 1 of 2 for text in tab 3, for text
-frameText3 = ttk.Frame(StatusMainFrame)
-frameText3.pack()
-# frame 2 of 2 for text in tab 3, for actual work
-frameStatusMenu = ttk.Frame(StatusMainFrame)
-frameStatusMenu.pack()
-
 # labels for reference
 label1 = ttk.Label(
     frameText1, text="Welcome to the booking tab! Here you can book a flight ticket using many options.")
-label2 = ttk.Label(
-    frameText2, text="Welcome to the managing tab! Here you can reschedule or cancel your ticket.")
-label3 = ttk.Label(
-    frameText3, text="Welcome to the status tab! Here you can check the status of your flight and ticket.")
 
 label1.grid(column=1, row=1)
-label2.grid(column=1, row=1)
-label3.grid(column=1, row=1)
 
 
 one_way = ttk.Radiobutton(frameBookingMenu, text='One way',
@@ -165,7 +170,7 @@ one_way = ttk.Radiobutton(frameBookingMenu, text='One way',
 two_way = ttk.Radiobutton(frameBookingMenu, text='Return',
                           value="2", variable=trip_direction, command=lambda: [hide_cities(), show_return_date()])
 multi_way = ttk.Radiobutton(frameBookingMenu, text='Multi-city',
-                            value="True", variable=trip_direction, command=lambda: [show_cities(), show_return_date()])
+                            value="True", variable=trip_direction_special, command=lambda: [show_cities(), show_return_date()])
 
 two_way.grid(row=1, column=1, ipady=5, sticky='w')
 one_way.grid(row=1, column=2, ipady=5, sticky='w')
@@ -292,6 +297,33 @@ Return_Date_Day_Entry.grid(
 Return_Date_Month_Label.grid(row=11, column=2, sticky='w', pady=2, padx=5)
 Return_Date_Month_Entry.grid(
     row=12, column=2, sticky='w', ipadx=6, pady=5, padx=5)
+
+
+calcButton = Button(frameBookingMenu, text="Calculate", command=getCost())
+calcButton.grid(row=20, column=2, sticky='s')
+calcButton.config(bg="lightgray", fg="white")
+
+
+# frame 1 of 2 for text in tab 2, for text
+frameText2 = ttk.Frame(ManagingMainFrame)
+frameText2.pack()
+# frame 2 of 2 for text in tab 2, for actual work
+frameManagingMenu = ttk.Frame(ManagingMainFrame)
+frameManagingMenu.pack()
+
+# frame 1 of 2 for text in tab 3, for text
+frameText3 = ttk.Frame(StatusMainFrame)
+frameText3.pack()
+# frame 2 of 2 for text in tab 3, for actual work
+frameStatusMenu = ttk.Frame(StatusMainFrame)
+frameStatusMenu.pack()
+label2 = ttk.Label(
+    frameText2, text="Welcome to the managing tab! Here you can reschedule or cancel your ticket.")
+label3 = ttk.Label(
+    frameText3, text="Welcome to the status tab! Here you can check the status of your flight and ticket.")
+
+label2.grid(column=1, row=1)
+label3.grid(column=1, row=1)
 
 BookingMainFrame.pack(fill='both', expand=True)
 ManagingMainFrame.pack(fill='both', expand=True)
