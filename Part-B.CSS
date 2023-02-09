@@ -5,7 +5,7 @@
   object-position: middle;
   position: absolute;
   left: 26%;
-  padding-bottom: 45px;
+  padding-bottom: 59.5px;
   top: -20px;
 }
 
@@ -87,7 +87,7 @@ table {
 
 th,
 td {
-  border: 1px solid black;
+  border: 0px solid black;
   padding: 8px;
   text-align: left;
 }
