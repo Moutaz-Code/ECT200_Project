@@ -3,7 +3,7 @@
   <title>Flight Booking</title>
   <head>
     <link rel="stylesheet" type="text/css" href="Part-B.CSS" />
-    <!--Code that links CSS to HTML-->
+    <!--Code that links CSS file to the HTML file-->
   </head>
   <body>
     <header>
@@ -27,8 +27,8 @@
               <button id="FlightButton" class="Button_Top">
                 Flight Status
               </button>
+              <!--Buttons at the top of the banner-->
             </td>
-            <!--Buttons itself-->
           </tr>
         </table>
       </div>
@@ -37,7 +37,7 @@
       <br />
       <div class="banner_2">
         <!-- Second banner that has most of the functions-->
-        <table class="Book-Button-Class">
+        <table class="Book-Button-Class" id="MyTable">
           <tr>
             <td>
               <input type="radio" id="html" name="fav_language" value="HTML" />
@@ -81,19 +81,21 @@
             </td>
           </tr>
         </table>
-        <!--Drop down lists and other types of lists and buttons-->
-        <script>
-          const apiUrl =
-            "https://restcountries.com/v2/all?fields=name;alpha2Code";
-          const countrySelectors = document.querySelectorAll(
-            "select[id^=countries]"
-          );
-          countrySelectors.forEach((countrySelector) => {
-            fetch(apiUrl)
-              .then((response) => response.json())
-              .then((countries) => {
-                countrySelector.innerHTML = "";
-                countrySelector.innerHTML = `
+        <!--Drop down lists and buttons-->
+      </div>
+    </header>
+  </body>
+</html>
+<script src="Part-B.JS"></script>
+<script>
+  const apiUrl = "https://restcountries.com/v2/all?fields=name;alpha2Code";
+  const countrySelectors = document.querySelectorAll("select[id^=countries]");
+  countrySelectors.forEach((countrySelector) => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((countries) => {
+        countrySelector.innerHTML = "";
+        countrySelector.innerHTML = `
                   <option value="">Select a country</option>
                   ${countries
                     .map(
@@ -102,12 +104,7 @@
                     )
                     .join("")}
                 `;
-              });
-          });
-        </script>
-        <!--Country code-->
-      </div>
-    </header>
-  </body>
-</html>
-<script src="Part-B Java.txt"></script>
+      });
+  });
+</script>
+<!--Country list code-->
